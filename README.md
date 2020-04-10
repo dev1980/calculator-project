@@ -11,7 +11,7 @@ This project consist of building a simple calculator using ReactJS.
 
 ## Live Demo
 
-[Live Demo Link](https://react-dev-calculator.herokuapp.com/)
+[Live Demo Link](https://react-dev-calculaor.herokuapp.com/)
 
 ## Authors
 
