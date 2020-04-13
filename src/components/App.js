@@ -6,15 +6,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      result: '0',
+      value: '0',
     };
   }
 
   render() {
-    const { result } = this.state;
+    const { value } = this.state;
     return (
       <div id="container">
-        <Display value={result} />
+        <Display value={value} />
         <ButtonPanel />
       </div>
     );
