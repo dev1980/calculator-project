@@ -11,6 +11,7 @@ const Display = prop => {
   );
 };
 
-Display.defaultProps = { value: PropTypes.string.isRequired };
+Display.defaultProps = { value: '0' };
+Display.propTypes = { value: PropTypes.string };
 
 export default Display;
