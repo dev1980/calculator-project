@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Display = props => {
-  const { value } = props;
+const Display = prop => {
+  const { value } = prop;
 
   return (
     <div className="display">
