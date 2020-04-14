@@ -37,5 +37,4 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is [MiT](https://opensource.org/licenses/MIT) licensed.
-# Calculator - ReactJS
-This project consist of building a simple calculator using ReactJS.
+
