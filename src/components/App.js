@@ -1,6 +1,7 @@
 import React from 'react';
 import Display from './Display';
 import ButtonPanel from './ButtonPanel';
+import calculate from '../logic/calculate';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,6 +9,12 @@ class App extends React.Component {
     this.state = {
       value: '0',
     };
+  }
+
+  updateValue(data, name) {
+    this.setState({
+      value: calculate(data, name),
+    });
   }
 
   render() {
