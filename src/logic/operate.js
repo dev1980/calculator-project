@@ -21,7 +21,7 @@ const operate = (numberOne, numberTwo, operation) => {
       result = x.div(y);
       break;
     case '%':
-      result = numberOne % numberTwo;
+      result = (numberOne * numberTwo) / 100;
       break;
     default:
       break;
