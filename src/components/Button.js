@@ -7,10 +7,10 @@ const Button = ({
   const style = { backgroundColor: color };
   if (wide) style.width = '50%';
 
-  const handleClick = () => { clickHandler(name); };
+  const handleClick = buttonName => { clickHandler(buttonName); };
 
   return (
-    <button className="button" type="button" style={style} onClick={handleClick}>
+    <button className="button" type="button" style={style} onClick={() => handleClick(name)}>
       {name}
     </button>
   );

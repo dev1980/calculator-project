@@ -24,13 +24,13 @@ const ButtonPanel = ({clickHandler}) => {
         <Button name="4" color="#eee" clickHandler={handleClick} />
         <Button name="5" color="#eee" clickHandler={handleClick} />
         <Button name="6" color="#eee" clickHandler={handleClick} />
-        <Button name="-" />
+        <Button name="-" clickHandler={handleClick} />
       </div>
       <div className="fourth-group">
         <Button name="1" color="#eee" clickHandler={handleClick} />
         <Button name="2" color="#eee" clickHandler={handleClick} />
         <Button name="3" color="#eee" clickHandler={handleClick} />
-        <Button name="+" />
+        <Button name="+" clickHandler={handleClick} />
       </div>
       <div className="fifth-group">
         <Button name="0" wide color="#eee" clickHandler={handleClick} />
