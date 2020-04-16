@@ -7,22 +7,29 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: null,
-      total: null,
+      total: '0',
       next: null,
-      operaton: null,
+      operation: null,
     };
+    this.handleClick = this.handleClick.bind(this);
   }
-handleClick = (name) =>{
-this.setState(state =>({
-  total: calculate(state, name)
-}));
-}
+
+  handleClick(buttonName) {
+    const { total, next, operation } = this.state;
+    const newData = calculate({ total, next, operation }, buttonName);
+    this.setState({
+      total: newData.total,
+      next: newData.next,
+      operation: newData.operation,
+    });
+  }
+
   render() {
+    const { total, next, operation } = this.state;
     return (
-      <div id="container">
-        <Display value={this.state.error || this.state.next || this.state.total || '0'} />
-        <ButtonPanel handleClick = {this.handleClick} />
+      <div id="container" className="app">
+        <Display result={total} next={next} operation={operation} />
+        <ButtonPanel clickHandler={this.handleClick} />
       </div>
     );
   }
