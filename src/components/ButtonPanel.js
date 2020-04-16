@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 
-const ButtonPanel = ({clickHandler}) => {
+const ButtonPanel = ({ clickHandler }) => {
   const handleClick = buttonName => {
     clickHandler(buttonName);
   };
