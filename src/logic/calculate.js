@@ -1,25 +1,91 @@
+/* eslint-disable no-restricted-globals */
 import operate from './operate';
 
-const calculate = (data, name) => {
-  let result;
-  const { total, next, operation } = data;
-  switch (name) {
-    case '+/-':
-      result = total * (-1);
-      break;
-    case '.':
-      result = '.';
-      break;
-    case 'AC':
-      result = ' ';
-      break;
-    case '=':
-      result = operate(total, next, operation);
-      break;
-    default:
+const calculate = (obj, buttonName) => {
+  const operations = ['+', '-', 'x', '÷'];
+
+  let { total, next, operation } = obj;
+
+  if (buttonName === '+/-') {
+    if (next) {
+      next = (+next * -1).toString();
+    }
+    if (total && total !== 'NaN' && !next) {
+      total = (+total * -1).toString();
+    }
   }
 
-  return result;
+  if (buttonName === '%') {
+    if (next) {
+      next = operate(null, next, buttonName);
+    } else if (!isNaN(total)) {
+      total = operate(total, null, buttonName);
+    }
+  }
+
+  if (buttonName === '=') {
+    if (total === 'NaN' && next && operation) {
+      return { total: 'NaN', next: null, operation: null };
+    }
+
+    if (next) {
+      total = operate(total, next, operation);
+      next = null;
+      operation = null;
+    }
+  }
+
+  if (operations.includes(buttonName)) {
+    if (total === 'NaN' && next && operation) {
+      return { total: 'NaN', next: null, operation: buttonName };
+    }
+
+    if (total && next && operation) {
+      total = operate(total, next, operation);
+      next = null;
+    }
+    operation = buttonName;
+  }
+
+  if (buttonName === '.') {
+    if (total && !isNaN(total) && !total.split('').includes('.')) {
+      total = `${total}.`;
+    }
+    if (next && !next.split('').includes('.')) {
+      next = `${next}.`;
+    }
+    if (!next && operation && total !== 'NaN') {
+      next = '0.';
+    }
+  }
+
+  if (buttonName === 'AC') {
+    total = '0';
+    next = null;
+    operation = null;
+  }
+
+  if (!isNaN(Number(buttonName)) && (total !== '0' && total !== 'NaN') && !operation) {
+    total += buttonName;
+  }
+
+  if (!isNaN(Number(buttonName)) && total === '0' && !operation) {
+    total = buttonName;
+  }
+
+  if (!isNaN(Number(buttonName)) && operation && next !== null) {
+    next += buttonName;
+  }
+
+  if (!isNaN(Number(buttonName)) && operation && next === null) {
+    next = buttonName;
+  }
+
+  if (total === 'NaN' && !isNaN(buttonName) && !operation) {
+    total = buttonName;
+  }
+
+  return { total, next, operation };
 };
 
 export default calculate;

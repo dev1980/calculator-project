@@ -1,17 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Display = props => {
-  let { value } = props;
-  value = value || '0';
+const Display = ({ result, next, operation }) => {
+  let display;
+  if (result && operation && next) {
+    display = next;
+  } else {
+    display = result;
+  }
   return (
     <div className="display">
-      <h3>{value}</h3>
+      <h3>{display}</h3>
     </div>
   );
 };
 
-Display.defaultProps = { value: '0' };
-Display.propTypes = { value: PropTypes.string };
+Display.defaultProps = {
+  result: '0',
+  next: null,
+  operation: null,
+};
+
+Display.propTypes = {
+  result: PropTypes.string,
+  next: PropTypes.string,
+  operation: PropTypes.string,
+};
 
 export default Display;

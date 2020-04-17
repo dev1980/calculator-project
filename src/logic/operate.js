@@ -1,32 +1,41 @@
+/* eslint-disable import/extensions */
 import Big from 'big-js';
 
 const operate = (numberOne, numberTwo, operation) => {
-  let result = new Big(0);
-  const x = new Big(numberOne);
-  const y = new Big(numberTwo);
-  switch (operation) {
-    case '+':
-      result = x.plus(y);
-      break;
-    case '-':
-      result = x.minus(y);
-      break;
-    case '*':
-      result = x.times(y);
-      break;
-    case '/':
-      if (y === 0) {
-        return 'Math Error';
-      }
-      result = x.div(y);
-      break;
-    case '%':
-      result = (numberOne * numberTwo) / 100;
-      break;
-    default:
-      break;
-  }
-  return String(result);
-};
+  let x;
+  let y;
 
+  if (numberOne) {
+    x = Big(numberOne);
+  }
+  if (numberTwo) {
+    y = Big(numberTwo);
+  }
+
+  if (operation === '-') {
+    return x.minus(y).toString();
+  }
+
+  if (operation === '+') {
+    return x.plus(y).toString();
+  }
+
+  if (operation === 'x') {
+    return x.mul(y).toString();
+  }
+
+  if (operation === '÷' && numberTwo === '0') {
+    return 'NaN';
+  }
+
+  if (operation === '%') {
+    if (numberOne) {
+      return x.mul(0.01).toString();
+    }
+    if (numberTwo) {
+      return y.mul(0.01).toString();
+    }
+  }
+  return x.div(y).toString();
+};
 export default operate;
