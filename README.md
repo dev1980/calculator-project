@@ -1,5 +1,5 @@
 # Calculator - ReactJS
-This project consist of building a simple calculator using ReactJS.
+This project consists of building a simple calculator using ReactJS.
 
 ![image](https://user-images.githubusercontent.com/50328853/79182869-9ebd7300-7e2f-11ea-8cd4-59a837bf7047.png)
 
@@ -26,7 +26,7 @@ This project consist of building a simple calculator using ReactJS.
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
+Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](https://github.com/dev1980/calculator-project/issues)
 
